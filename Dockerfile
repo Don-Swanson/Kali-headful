@@ -36,7 +36,7 @@ echo xfce4-session > /home/kali/.xsession ; \
 chmod +x /home/kali/.xsession ;
 
 #Add /bin/bash to keep container running
-RUN echo "/bin/bash" >> /entrypoint.sh
+RUN echo "tail -f /dev/null" >> /entrypoint.sh
 
 EXPOSE 22 3389
 WORKDIR "/root"
