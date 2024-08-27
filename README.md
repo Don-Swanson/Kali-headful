@@ -14,7 +14,7 @@ Pass: toor
 
 ## How to use
 
-A Docker Compose example is coming soon.  
+Please check the docker-compose.yml sample for an example to start the container. Then you can connect over RDP or SSH to use.  
 
 ## Notes  
 - The desktop can take a little bit to load on first start  
