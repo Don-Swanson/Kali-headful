@@ -40,5 +40,4 @@ RUN echo "/bin/bash" >> /entrypoint.sh
 
 EXPOSE 22 3389
 WORKDIR "/root"
-ENTRYPOINT ["/bin/bash"]
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
