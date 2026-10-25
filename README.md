@@ -17,4 +17,5 @@ Pass: toor
 Please check the docker-compose.yml sample for an example to start the container. Then you can connect over RDP or SSH to use.  
 
 ## Notes  
+- `cap_add: SYS_ADMIN` and `seccomp`/`apparmor` unconfined are required, otherwise GTK's sandboxed icon loader (bwrap) fails and the XFCE panel crashes, leaving a blank desktop  
 - The desktop can take a little bit to load on first start  

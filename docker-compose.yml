@@ -4,7 +4,10 @@ services:
     image: donswanson/kali-headful
     container_name: kali
     security_opt:
-      - seccomp:unconfined #optional
+      - seccomp:unconfined
+      - apparmor:unconfined
+    cap_add:
+      - SYS_ADMIN #required: GTK's glycin icon loader needs bwrap sandboxing, else the xfce panel crashes
     environment:
       - PUID=1000
       - PGID=1000

@@ -28,6 +28,14 @@ RUN echo "kali:toor" | chpasswd
 RUN rm /etc/xdg/autostart/xfce4-power-manager.desktop >/dev/null 2>&1
 RUN sed -i s/power/fail/ /etc/xdg/xfce4/panel/default.xml ;
 
+#Prepare /home/kali at runtime: a bind-mounted volume hides the build-time home
+#(.xsession, skel files) and is often root-owned, which breaks xfce panel/wm
+RUN echo "mkdir -p /home/kali" >> /entrypoint.sh ; \
+echo "cp -rn /etc/skel/. /home/kali/" >> /entrypoint.sh ; \
+echo "echo xfce4-session > /home/kali/.xsession" >> /entrypoint.sh ; \
+echo "chmod +x /home/kali/.xsession" >> /entrypoint.sh ; \
+echo "chown -R kali:kali /home/kali" >> /entrypoint.sh
+
 #Configure xrdp
 RUN echo "rm -rf /var/run/xrdp >/dev/null 2>&1" >> /entrypoint.sh ; \
 echo "/etc/init.d/xrdp start" >> /entrypoint.sh ; \
